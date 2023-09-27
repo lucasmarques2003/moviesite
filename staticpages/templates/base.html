@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       {% block title %}
+
       {% endblock %}| Watch that film!
     </title>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
@@ -19,6 +20,9 @@
       <a href="{% url 'index' %}"><img src="{% static 'logo.svg' %}" /></a>
       <nav id="navegacao-principal">
         <ul>
+          <li>
+            <a href="{% url 'movies:index' %}">Filmes</a>
+          </li>
           <li>
             <a href="{% url 'about' %}">Sobre</a>
           </li>
