@@ -1,15 +1,18 @@
-from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .temp_data import movie_data
+from django.shortcuts import render
+
 
 def detail_movie(request, movie_id):
-    context = {"movie": movie_data[movie_id - 1]}
+    context = {'movie': movie_data[movie_id - 1]}
     return render(request, 'movies/detail.html', context)
+
 
 def list_movies(request):
     context = {"movie_list": movie_data}
     return render(request, 'movies/index.html', context)
+
 
 def search_movies(request):
     context = {}
@@ -21,6 +24,7 @@ def search_movies(request):
             ]
         }
     return render(request, 'movies/search.html', context)
+
 
 def create_movie(request):
     if request.method == 'POST':
