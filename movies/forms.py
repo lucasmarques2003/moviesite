@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from .models import Movie, Review, Provider
 
+
 class MovieForm(ModelForm):
     class Meta:
         model = Movie
@@ -15,6 +16,7 @@ class MovieForm(ModelForm):
             'poster_url': 'URL do Poster',
         }
 
+
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
@@ -26,6 +28,7 @@ class ReviewForm(ModelForm):
             'author': 'Usuário',
             'text': 'Resenha',
         }
+
 
 class ProviderForm(ModelForm):
     class Meta:
@@ -39,4 +42,4 @@ class ProviderForm(ModelForm):
             'service': 'Serviço de Streaming',
             'has_flat_price': 'FLAT?',
             'price': 'Preço',
-        } 
+        }

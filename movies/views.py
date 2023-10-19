@@ -1,18 +1,22 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404
-from .models import Movie, Review, List, Provider
 from django.views import generic
-from .forms import MovieForm, ProviderForm, ReviewForm
+
+from .models import Movie, Review, List, Provider
+from .forms import MovieForm, ReviewForm, ProviderForm
+
 
 def detail_movie(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     context = {'movie': movie}
     return render(request, 'movies/detail.html', context)
 
+
 class MovieListView(generic.ListView):
     model = Movie
     template_name = 'movies/index.html'
+
 
 def search_movies(request):
     context = {}
@@ -21,6 +25,7 @@ def search_movies(request):
         movie_list = Movie.objects.filter(name__icontains=search_term)
         context = {"movie_list": movie_list}
     return render(request, 'movies/search.html', context)
+
 
 def create_movie(request):
     if request.method == 'POST':
@@ -40,6 +45,7 @@ def create_movie(request):
         provider_form = ProviderForm()
     context = {'movie_form': movie_form, 'provider_form': provider_form}
     return render(request, 'movies/create.html', context)
+
 
 def update_movie(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
@@ -64,6 +70,7 @@ def update_movie(request, movie_id):
     context = {'movie': movie, 'form': form}
     return render(request, 'movies/update.html', context)
 
+
 def delete_movie(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
 
@@ -73,6 +80,7 @@ def delete_movie(request, movie_id):
 
     context = {'movie': movie}
     return render(request, 'movies/delete.html', context)
+
 
 def create_review(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
@@ -91,6 +99,7 @@ def create_review(request, movie_id):
         form = ReviewForm()
     context = {'form': form, 'movie': movie}
     return render(request, 'movies/review.html', context)
+
 
 class ListListView(generic.ListView):
     model = List

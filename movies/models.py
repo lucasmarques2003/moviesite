@@ -20,7 +20,8 @@ class Review(models.Model):
 
     def __str__(self):
         return f'"{self.text}" - {self.author.username}'
-    
+
+
 class List(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE)
@@ -29,7 +30,8 @@ class List(models.Model):
 
     def __str__(self):
         return f'{self.name} by {self.author}'
-    
+
+
 class Provider(models.Model):
     movie = models.OneToOneField(
         Movie,

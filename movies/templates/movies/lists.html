@@ -17,9 +17,8 @@ Listas
         <div class="lista-de-cards">
             {% for movie in list.movies.all %}
             <div class="card">
-                <a href="{% url 'movies:detail' movie.id %}">
-                    <img src="{{ movie.poster_url }}" alt="Poster do filme {{ movie.name}}">
-                </a>
+                <a href="{% url 'movies:detail' movie.id %}"><img src="{{ movie.poster_url }}"
+                        alt="Poster do filme {{ movie.name}}"></a>
                 <p>{{ movie.name }} ({{ movie.release_year }})</p>
             </div>
             {% endfor %}
